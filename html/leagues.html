@@ -1,0 +1,127 @@
+<!--This HTML is based on templates from FreeCodeCamp, with formatting from W3 schools:
+https://www.freecodecamp.org/news/html-starter-template-a-basic-html5-boilerplate-for-index-html/
+https://www.w3schools.com/html/html_images_background.asp
+It also borrows heavily from the Battle Star Galactica example provided in the assignment description.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Transfer Central - your financial guide to professional football</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+  </head>
+  <body style="background-image: url('background.jpg'); background-repeat: no-repeat;background-attachment: fixed;
+  background-size: 100% 100%;">
+    <main>
+        <nav class="navbar" style="display: block; text-align: center; padding: 5px">
+          <ul style="overflow: hidden">
+              <li style="float: left;"><a href="index.html"style="display: block; text-align: center; padding: 15px">Index</a></li>
+              <li style="float: left;"><a href="players.html"style="display: block; text-align: center; padding: 15px">Players</a></li>
+              <li style="float: left;"><a href="transfers.html"style="display: block; text-align: center; padding: 15px">Transfers</a></li>
+              <li style="float: left;"><a href="teams.html"style="display: block; text-align: center; padding: 15px">Teams</a></li>
+              <li style="float: left;"><a href="leagues.html"style="display: block; text-align: center; padding: 15px">Leagues</a></li>
+              <li style="float: left;"><a href="agents.html"style="display: block; text-align: center; padding: 15px">Agents</a></li>
+          </ul>
+        </nav>
+        <h1 style="color: #eee;">Transfer Central</h1>
+        <h2 style="color: #eee; align-self: center;">Leagues</h2>
+        <table border="1" cellpadding="5" style="margin-left: auto;
+  margin-right: auto; width: 50%; color: #eee; background-color: black">
+            <caption>Leagues</caption>
+            <tr>
+              <th><a href="#">New</a></th>
+              <th></th>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Country</th>
+              <th>Rank</th>
+              <th>Number of Teams</th>
+              <th>Year Founded</th>
+            </tr>
+            <tr>
+                <td><a href="#">Edit</a></td>
+                <td><a href="#">Delete</a></td>
+                <td align="right" >1</td>
+                <td>Premier League</td>
+                <td>England</td>
+                <td>1</td>
+                <td >20</td>
+                <td align="right">1995</td>
+            </tr>
+            <tr>
+                <td><a href="#">Edit</a></td>
+                <td><a href="#">Delete</a></td>
+                <td align="right" >1</td>
+                <td>La Liga</td>
+                <td>Spain</td>
+                <td>1</td>
+                <td >20</td>
+                <td align="right">1932</td>
+            </tr>
+            <tr>
+                <td><a href="#">Edit</a></td>
+                <td><a href="#">Delete</a></td>
+                <td align="right" >1</td>
+                <td>Ligue 1</td>
+                <td>France</td>
+                <td>1</td>
+                <td >18</td>
+                <td align="right">1908</td>
+            </tr>
+          </table>
+          <div id="insert" style="margin-left: auto;
+  margin-right: auto; width: 50%;color: #eee; background-color: black">
+            <form id="addPlanet">
+                <legend><strong>Add League</strong></legend>
+                  <fieldset class="fields">
+                    <label> Name </label> <input type="text" name="name">
+                    <label> Country </label> <input type="text" name="country">
+                    <label> Rank </label> <input type="text" name="rank">
+                    <label> Number of Teams </label> <input type="text" name="numberTeams">
+                    <label> Year Founded </label> <input type="text" name="yearFounded">
+                  </fieldset>
+                  <input class="btn" type="submit" id="addPlanet" value="Add a League">
+                  <input class="btn" type="button" value="cancel">
+            </form>
+        </div>
+        
+        <p>&nbsp;</p>
+        <div id="update" style="margin-left: auto;
+  margin-right: auto; width: 50%; color: #eee; background-color: black">
+          <form id="updatePlanet">
+              <legend><strong>Update League</strong></legend>
+                  <fieldset class="fields">
+                  <label>ID:</label> 1
+                  <label> Name </label> <input type="text" name="name">
+                  <label> Country </label> <input type="text" name="country">
+                  <label> Rank </label> <input type="text" name="rank">
+                  <label> Number of Teams </label> <input type="text" name="numberTeams">
+                  <label> Year Founded </label> <input type="text" name="yearFounded">
+            </fieldset>
+            <input class="btn" type="submit" id="UpdateSaveLeague" value="Save Update League">
+                  <input class="btn" type="button" value="cancel" >
+          </form> 
+        </div>
+        <p>&nbsp;</p>
+        <div id="delete" style="margin-left: auto;
+  margin-right: auto; width: 50%; color: #eee; background-color: black">
+          <form id="deletePlanet">
+              <legend><strong>Delete League</strong></legend>
+                  <fieldset class="fields">
+                  <p>Are you sure you wish to delete the following?</p>
+                  <label>ID:</label> 1
+                    <label> Name </label> La Liga
+                    
+            </fieldset>
+            <input class="btn" type="submit" id="DeletePlanet" value="Delete Planet">
+                  <input class="btn" type="button" value="cancel" >
+          </form> 
+        </div><!-- delete -->
+    </main>
+	<script></script>
+  </body>
+</html>

@@ -1,0 +1,137 @@
+<!--This HTML is based on templates from FreeCodeCamp, with formatting from W3 schools:
+https://www.freecodecamp.org/news/html-starter-template-a-basic-html5-boilerplate-for-index-html/
+https://www.w3schools.com/html/html_images_background.asp
+It also borrows heavily from the Battle Star Galactica example provided in the assignment description.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Transfer Central - your financial guide to professional football</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+  </head>
+  <body style="background-image: url('background.jpg'); background-repeat: no-repeat;background-attachment: fixed;
+  background-size: 100% 100%;">
+    <main>
+      <nav class="navbar" style="display: block; text-align: center; padding: 5px">
+        <ul style="overflow: hidden">
+            <li style="float: left;"><a href="index.html"style="display: block; text-align: center; padding: 15px">Index</a></li>
+            <li style="float: left;"><a href="players.html"style="display: block; text-align: center; padding: 15px">Players</a></li>
+            <li style="float: left;"><a href="transfers.html"style="display: block; text-align: center; padding: 15px">Transfers</a></li>
+            <li style="float: left;"><a href="teams.html"style="display: block; text-align: center; padding: 15px">Teams</a></li>
+            <li style="float: left;"><a href="leagues.html"style="display: block; text-align: center; padding: 15px">Leagues</a></li>
+            <li style="float: left;"><a href="agents.html"style="display: block; text-align: center; padding: 15px">Agents</a></li>
+        </ul>
+    </nav>
+        <h1 style="color: #eee;">Transfer Central</h1>
+        <h2 style="color: #eee; align-self: center;">Players</h2>
+        <table border="1" cellpadding="5" style="margin-left: auto;
+  margin-right: auto; width: 50%; color: #eee; background-color: black">
+            <caption>Players</caption>
+            <tr>
+              <th><a href="#">New</a></th>
+              <th></th>
+              <th>ID</th>
+              <th>playerID</th>
+              <th>agentID</th>
+              <th>sellingTeamID</th>
+              <th>buyingTeamID</th>
+              <th>Date of Transfer</th>
+              <th>Transfer Fee</th>
+              <th>Contract Length</th>
+              <th>Commission Percent</th>
+            </tr>
+            <tr>
+                <td><a href="#">Edit</a></td>
+                <td><a href="#">Delete</a></td>
+                <td align="right" >1</td>
+                <td>100003</td>
+                <td>400003</td>
+                <td>200005</td>
+                <td>200002</td>
+                <td>7/1/2024</td>
+                <td>180000000</td>
+                <td>5</td>
+                <td>15</td>
+            </tr>
+            <tr>
+                <td><a href="#">Edit</a></td>
+                <td><a href="#">Delete</a></td>
+                <td align="right" >1</td>
+                <td>100001</td>
+                <td>400001</td>
+                <td>200002</td>
+                <td>200001</td>
+                <td>8/21/2021</td>
+                <td>350000000</td>
+                <td>5</td>
+                <td>15</td>
+            </tr>
+            <tr>
+              <td><a href="#">Edit</a></td>
+              <td><a href="#">Delete</a></td>
+              <td align="right" >1</td>
+              <td>100004</td>
+              <td>400002</td>
+              <td>200004</td>
+              <td>200001</td>
+              <td>7/10/2014</td>
+              <td>300000000</td>
+              <td>5</td>
+              <td>15</td>
+            </tr>
+          </table>
+          <div id="insert" style="margin-left: auto;
+  margin-right: auto; width: 50%;color: #eee; background-color: black">
+            <form id="addPlanet">
+                <legend><strong>Add Player</strong></legend>
+                  <fieldset class="fields">
+                    <label> First </label> <input type="text" name="name">
+                    <label> Last </label> <input type="text" name="name">
+                    <label> Position </label> <input type="text" name="population">
+                    <label> Value </label> <input type="text" name="language">
+                  </fieldset>
+                  <input class="btn" type="submit" id="addPlanet" value="Add a Planet">
+                  <input class="btn" type="button" value="cancel">
+            </form>
+        </div>
+        
+        <p>&nbsp;</p>
+        <div id="update" style="margin-left: auto;
+  margin-right: auto; width: 50%; color: #eee; background-color: black">
+          <form id="updatePlanet">
+              <legend><strong>Update Player</strong></legend>
+                  <fieldset class="fields">
+                  <label>ID:</label> 1
+                    <label> First </label> <input type="text" name="name">
+                    <label> Last </label> <input type="text" name="name">
+                    <label> Position </label> <input type="text" name="population">
+                    <label> Value </label> <input type="text" name="language">
+            </fieldset>
+            <input class="btn" type="submit" id="UpdateSavePlanet" value="Save Update Planet">
+                  <input class="btn" type="button" value="cancel" >
+          </form> 
+        </div>
+        <p>&nbsp;</p>
+        <div id="delete" style="margin-left: auto;
+  margin-right: auto; width: 50%; color: #eee; background-color: black">
+          <form id="deletePlanet">
+              <legend><strong>Delete Player</strong></legend>
+                  <fieldset class="fields">
+                  <p>Are you sure you wish to delete the following?</p>
+                  <label>ID:</label> 1
+                    <label> Name </label> Mbappe
+                    
+            </fieldset>
+            <input class="btn" type="submit" id="DeletePlanet" value="Delete Planet">
+                  <input class="btn" type="button" value="cancel" >
+          </form> 
+        </div><!-- delete -->
+    </main>
+	<script></script>
+  </body>
+</html>
