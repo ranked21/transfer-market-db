@@ -15,8 +15,9 @@ https://www.w3schools.com/html/html_images_background.asp
   </head>
   <body style="background-image: url('background.jpg'); background-repeat: no-repeat;background-attachment: fixed;
   background-size: 100% 100%;">
-    <main>
-        <nav class="navbar" style="display: block; text-align: center; padding: 5px">
+    <main style="width:100%;">
+      <div id="nav" style="background-color: rgba(200, 200, 200, 0.8); text-align: center; width:100%">
+        <nav class="navbar" style="display: block; text-align: center; padding: 5px;">
           <ul style="overflow: hidden">
               <li style="float: left;"><a href="index.html"style="display: block; text-align: center; padding: 15px">Index</a></li>
               <li style="float: left;"><a href="players.html"style="display: block; text-align: center; padding: 15px">Players</a></li>
@@ -26,55 +27,57 @@ https://www.w3schools.com/html/html_images_background.asp
               <li style="float: left;"><a href="agents.html"style="display: block; text-align: center; padding: 15px">Agents</a></li>
           </ul>
         </nav>
+      </div>
         <h1 style="color: #eee;">Transfer Central</h1>
         <h2 style="color: #eee; align-self: center;">Teams</h2>
-        <table border="1" cellpadding="5" style="margin-left: auto;
-  margin-right: auto; width: 50%; color: #eee; background-color: black">
-            <caption>Teams</caption>
-            <tr>
-              <th><a href="#">New</a></th>
-              <th></th>
-              <th>ID</th>
-              <th>Team Name</th>
-              <th>City</th>
-              <th>League</th>
-              <th>Year Founded</th>
-              <th>Stadium Capacity</th>
-            </tr>
-            <tr>
-              <td><a href="#">Edit</a></td>
-              <td><a href="#">Delete</a></td>
-              <td align="right" >1</td>
-              <td>Arsenal</td>
-              <td>London</td>
-              <td>Premier League</td>
-              <td align="right">1886</td>
-              <td align="right">55,000</td>
-            </tr>
-            <tr>
-              <td><a href="#">Edit</a></td>
-              <td><a href="#">Delete</a></td>
-              <td align="right" >1</td>
-              <td>Manchester United</td>
-              <td>Manchester</td>
-              <td>Premier League</td>
-              <td align="right">1912</td>
-              <td align="right">65,000</td>
-            </tr>
-            <tr>
-              <td><a href="#">Edit</a></td>
-              <td><a href="#">Delete</a></td>
-              <td align="right" >1</td>
-              <td>Real Madrid</td>
-              <td>Madrid</td>
-              <td>La Liga</td>
-              <td align="right">1875</td>
-              <td align="right">70,000</td>
-            </tr>
+        <div class="custom-form">
+          <table border="1" cellpadding="5" class="custom-form" style="margin-left: auto; margin-right: auto; width: 100%; color: #eee; background-color: black;">
+              <caption>Teams</caption>
+              <tr>
+                <th><a href="#">New</a></th>
+                <th></th>
+                <th>ID</th>
+                <th>Team Name</th>
+                <th>City</th>
+                <th>League</th>
+                <th>Year Founded</th>
+                <th>Stadium Capacity</th>
+              </tr>
+              <tr>
+                <td><a href="#">Edit</a></td>
+                <td><a href="#">Delete</a></td>
+                <td align="right" >1</td>
+                <td>Arsenal</td>
+                <td>London</td>
+                <td>Premier League</td>
+                <td align="right">1886</td>
+                <td align="right">55,000</td>
+              </tr>
+              <tr>
+                <td><a href="#">Edit</a></td>
+                <td><a href="#">Delete</a></td>
+                <td align="right" >1</td>
+                <td>Manchester United</td>
+                <td>Manchester</td>
+                <td>Premier League</td>
+                <td align="right">1912</td>
+                <td align="right">65,000</td>
+              </tr>
+              <tr>
+                <td><a href="#">Edit</a></td>
+                <td><a href="#">Delete</a></td>
+                <td align="right" >1</td>
+                <td>Real Madrid</td>
+                <td>Madrid</td>
+                <td>La Liga</td>
+                <td align="right">1875</td>
+                <td align="right">70,000</td>
+              </tr>
           </table>
-          <div id="insert" style="margin-left: auto;
-  margin-right: auto; width: 50%;color: #eee; background-color: black">
-            <form id="addPlanet">
+        </div>
+        <p>&nbsp;</p>
+        <div id="insert" class="custom-form">
+            <form id="addTeam">
                 <legend><strong>Add Team</strong></legend>
                   <fieldset class="fields">
                     <label> ID </label> <input type="text" name="id">
@@ -83,44 +86,37 @@ https://www.w3schools.com/html/html_images_background.asp
                     <label> League </label> <input type="text" name="league">
                     <label> Year Founded </label> <input type="text" name="yearFounded">
                     <label> Stadium Capacity </label> <input type="text" name="stadiumCapacity">
-                    <label> Position </label> <input type="text" name="population">
-                    <label> Value </label> <input type="text" name="language">
                   </fieldset>
-                  <input class="btn" type="submit" id="addPlanet" value="Add a Planet">
+                  <input class="btn" type="submit" id="addTeam" value="Add a Team">
                   <input class="btn" type="button" value="cancel">
             </form>
         </div>
-        
-        <p>&nbsp;</p>
-        <div id="update" style="margin-left: auto;
-  margin-right: auto; width: 50%; color: #eee; background-color: black">
-          <form id="updatePlanet">
-              <legend><strong>Update Team</strong></legend>
-                  <fieldset class="fields">
-                  <label>ID:</label> 1
-                    <label> First </label> <input type="text" name="first">
-                    <label> Last </label> <input type="text" name="last">
-                    <label> Position </label> <input type="text" name="position">
-                    <label> Value </label> <input type="text" name="value">
-                    <label> Position </label> <input type="text" name="position">
-                    <label> Value </label> <input type="text" name="value">
-            </fieldset>
-            <input class="btn" type="submit" id="UpdateSavePlanet" value="Save Update Planet">
+        <br></br>
+        <div id="update" class="custom-form">
+          <form id="updateTeam"">
+            <legend><strong>Update Team</strong></legend>
+              <fieldset class="fields">
+                <label> ID </label> <input type="text" name="id">
+                <label> TeamName </label> <input type="text" name="name">
+                <label> City </label> <input type="text" name="city">
+                <label> League </label> <input type="text" name="league">
+                <label> Year Founded </label> <input type="text" name="yearFounded">
+                <label> Stadium Capacity </label> <input type="text" name="stadiumCapacity">
+              </fieldset>
+            <input class="btn" type="submit" id="UpdateSaveTeam" value="Save Update Team">
                   <input class="btn" type="button" value="cancel" >
           </form> 
         </div><!-- update -->
         <p>&nbsp;</p>
-        <div id="delete" style="margin-left: auto;
-  margin-right: auto; width: 50%; color: #eee; background-color: black">
-          <form id="deletePlanet">
+        <div id="delete" class="custom-form">
+          <form id="deleteTeam">
               <legend><strong>Delete Team</strong></legend>
                   <fieldset class="fields">
                   <p>Are you sure you wish to delete the following?</p>
                   <label>ID:</label> 1
                     <label> Name </label> Real Madrid
-                    
             </fieldset>
-            <input class="btn" type="submit" id="DeletePlanet" value="Delete Planet">
+            <input class="btn" type="submit" id="DeleteTeam" value="Delete Team">
                   <input class="btn" type="button" value="cancel" >
           </form> 
         </div><!-- delete -->
