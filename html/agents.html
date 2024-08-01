@@ -16,98 +16,100 @@ It also borrows heavily from the Battle Star Galactica example provided in the a
   </head>
   <body style="background-image: url('background.jpg'); background-repeat: no-repeat;background-attachment: fixed;
   background-size: 100% 100%;">
-    <main>
-        <nav class="navbar" style="display: block; text-align: center; padding: 5px">
-            <ul style="overflow: hidden">
-                <li style="float: left;"><a href="index.html"style="display: block; text-align: center; padding: 15px">Index</a></li>
-                <li style="float: left;"><a href="players.html"style="display: block; text-align: center; padding: 15px">Players</a></li>
-                <li style="float: left;"><a href="transfers.html"style="display: block; text-align: center; padding: 15px">Transfers</a></li>
-                <li style="float: left;"><a href="teams.html"style="display: block; text-align: center; padding: 15px">Teams</a></li>
-                <li style="float: left;"><a href="leagues.html"style="display: block; text-align: center; padding: 15px">Leagues</a></li>
-                <li style="float: left;"><a href="agents.html"style="display: block; text-align: center; padding: 15px">Agents</a></li>
-            </ul>
+    <main style="width:100%">
+      <div id="nav" style="background-color: rgba(200, 200, 200, 0.8); text-align: center; width:100%">
+        <nav class="navbar" style="display: block; text-align: center; padding: 5px;">
+          <ul style="overflow: hidden">
+              <li style="float: left;"><a href="index.html"style="display: block; text-align: center; padding: 15px">Index</a></li>
+              <li style="float: left;"><a href="players.html"style="display: block; text-align: center; padding: 15px">Players</a></li>
+              <li style="float: left;"><a href="transfers.html"style="display: block; text-align: center; padding: 15px">Transfers</a></li>
+              <li style="float: left;"><a href="teams.html"style="display: block; text-align: center; padding: 15px">Teams</a></li>
+              <li style="float: left;"><a href="leagues.html"style="display: block; text-align: center; padding: 15px">Leagues</a></li>
+              <li style="float: left;"><a href="agents.html"style="display: block; text-align: center; padding: 15px">Agents</a></li>
+          </ul>
         </nav>
+      </div>
         <h1 style="color: #eee;">Transfer Central</h1>
         <h2 style="color: #eee; align-self: center;">Agents</h2>
-        <table border="1" cellpadding="5" style="margin-left: auto;
-  margin-right: auto; width: 50%; color: #eee; background-color: black">
-            <caption>Agents</caption>
-            <tr>
-              <th><a href="#">New</a></th>
-              <th></th>
-              <th>ID</th>
-              <th>First</th>
-              <th>Last</th>
-              <th>Agency</th>
-              <th>Years Experience</th>
-              <th>Commission</th>
-            </tr>
-            <tr>
-                <td><a href="#">Edit</a></td>
-                <td><a href="#">Delete</a></td>
-                <td>1</td>
-                <td>Kia</td>
-                <td>Joorabchian</td>
-                <td>Team Raiola</td>
-                <td>15</td>
-                <td>11</td>
-            </tr>
-            <tr>
-                <td><a href="#">Edit</a></td>
-                <td><a href="#">Delete</a></td>
-                <td>1</td>
-                <td>Jorge</td>
-                <td>Mendes</td>
-                <td>Nordic Sky</td>
-                <td>20</td>
-                <td>25</td>
-            </tr>
-            <tr>
-                <td><a href="#">Edit</a></td>
-                <td><a href="#">Delete</a></td>
-                <td>1</td>
-                <td>Fayza</td>
-                <td>Lamari</td>
-                <td>Vibra Football</td>
-                <td>17</td>
-                <td>13</td>
-            </tr>
-          </table>
-          <div id="insert" style="margin-left: auto;
-  margin-right: auto; width: 50%;color: #eee; background-color: black">
-            <form id="addPlanet">
-                <legend><strong>Add Agent</strong></legend>
-                  <fieldset class="fields">
-                    <label> First </label> <input type="text" name="name">
-                    <label> Last </label> <input type="text" name="name">
-                    <label> Position </label> <input type="text" name="population">
-                    <label> Value </label> <input type="text" name="language">
-                  </fieldset>
-                  <input class="btn" type="submit" id="addPlanet" value="Add an Agent">
-                  <input class="btn" type="button" value="cancel">
-            </form>
+        <div class="custom-form">
+          <table border="1" cellpadding="5" style="margin-left: auto;
+    margin-right: auto; width: 50%; color: #eee; background-color: black">
+              <caption>Agents</caption>
+              <tr>
+                <th><a href="#">New</a></th>
+                <th></th>
+                <th>ID</th>
+                <th>First</th>
+                <th>Last</th>
+                <th>Agency</th>
+                <th>Years Experience</th>
+                <th>Commission</th>
+              </tr>
+              <tr>
+                  <td><a href="#">Edit</a></td>
+                  <td><a href="#">Delete</a></td>
+                  <td>1</td>
+                  <td>Kia</td>
+                  <td>Joorabchian</td>
+                  <td>Team Raiola</td>
+                  <td>15</td>
+                  <td>11</td>
+              </tr>
+              <tr>
+                  <td><a href="#">Edit</a></td>
+                  <td><a href="#">Delete</a></td>
+                  <td>1</td>
+                  <td>Jorge</td>
+                  <td>Mendes</td>
+                  <td>Nordic Sky</td>
+                  <td>20</td>
+                  <td>25</td>
+              </tr>
+              <tr>
+                  <td><a href="#">Edit</a></td>
+                  <td><a href="#">Delete</a></td>
+                  <td>1</td>
+                  <td>Fayza</td>
+                  <td>Lamari</td>
+                  <td>Vibra Football</td>
+                  <td>17</td>
+                  <td>13</td>
+              </tr>
+            </table>
         </div>
-        
         <p>&nbsp;</p>
-        <div id="update" style="margin-left: auto;
-  margin-right: auto; width: 50%; color: #eee; background-color: black">
-          <form id="updatePlanet">
+        <div id="insert" class="custom-form">
+          <form id="addAgent">
+              <legend><strong>Add Agent</strong></legend>
+                <fieldset class="fields">
+                  <label> First </label> <input type="text" name="name">
+                  <label> Last </label> <input type="text" name="name">
+                  <label> Agency </label> <input type="text" name="agency">
+                  <label> Years Experience </label> <input type="text" name="yearsExperience">
+                  <label> Commission </label> <input type="text" name="commission">
+                </fieldset>
+                <input class="btn" type="submit" id="addAgent" value="Add an Agent">
+                <input class="btn" type="button" value="cancel">
+          </form>
+        </div>
+        <p>&nbsp;</p>
+        <div id="update" class="custom-form">
+          <form id="updateAgent">
               <legend><strong>Update Agent</strong></legend>
-                  <fieldset class="fields">
-                  <label>ID:</label> 1
-                    <label> First </label> <input type="text" name="name">
-                    <label> Last </label> <input type="text" name="name">
-                    <label> Position </label> <input type="text" name="population">
-                    <label> Value </label> <input type="text" name="language">
-            </fieldset>
-            <input class="btn" type="submit" id="UpdateSavePlanet" value="Save Update Agent">
+              <fieldset class="fields">
+                <label> First </label> <input type="text" name="name">
+                <label> Last </label> <input type="text" name="name">
+                <label> Agency </label> <input type="text" name="agency">
+                <label> Years Experience </label> <input type="text" name="yearsExperience">
+                <label> Commission </label> <input type="text" name="commission">
+              </fieldset>
+            <input class="btn" type="submit" id="UpdateSaveAgent" value="Save Update Agent">
                   <input class="btn" type="button" value="cancel" >
           </form> 
         </div>
         <p>&nbsp;</p>
-        <div id="delete" style="margin-left: auto;
-  margin-right: auto; width: 50%; color: #eee; background-color: black">
-          <form id="deletePlanet">
+        <div id="delete" class="custom-form">
+          <form id="deleteAgent">
               <legend><strong>Delete Agent</strong></legend>
                   <fieldset class="fields">
                   <p>Are you sure you wish to delete the following?</p>
@@ -115,7 +117,7 @@ It also borrows heavily from the Battle Star Galactica example provided in the a
                     <label> Name </label> Kia Joorabchian
                     
             </fieldset>
-            <input class="btn" type="submit" id="DeletePlanet" value="Delete Agent">
+            <input class="btn" type="submit" id="DeleteAgent" value="Delete Agent">
                   <input class="btn" type="button" value="cancel" >
           </form> 
         </div><!-- delete -->
