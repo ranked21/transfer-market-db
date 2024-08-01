@@ -30,7 +30,7 @@ VALUES (:teamName, :city, :country, :yearFounded, :stadiumCapacity, :leagueID);
 
 -- Updating an existing Team
 UPDATE Teams
-SET team = :teamName, city = :city, country = :country, yearFounded = :yearFounded
+SET team = :teamName, city = :city, country = :country, yearFounded = :yearFounded,
 stadiumCapacity = :stadiumCapacity, leagueID = :leagueID
 WHERE teamID = :teamID;
 
@@ -51,7 +51,7 @@ VALUES (:agentFirstName, :agentLastName, :agentAgency, :agentYearsExperience, :a
 -- Update an existing Agent
 UPDATE Agents
 SET agentFirstName = :agentFirstName, agentLastName = agentLastName, agentAgency = :agentAgency,
-agentYearsExperience = :agentYearsExperience, agentCommissionRate = :agentCommissionRate;
+agentYearsExperience = :agentYearsExperience, agentCommissionRate = :agentCommissionRate
 WHERE agentID = :agentID;
 
 -- Delete an Agent
@@ -125,3 +125,13 @@ SELECT Players.playerFirstName, Players.playerLastName, Players.currentSalary, P
 FROM Players
 INNER JOIN Transfers ON Players.playerID = Transfers.playerID
 ORDER BY Transfers.transferFee DESC;
+
+-- Find all the Leagues for a specific Team
+SELECT TeamsLeagues.leagueName
+FROM TeamsLeagues
+INNER JOIN Leagues ON Leagues.leagueID = TeamsLeagues.teamID;
+
+-- Find all the Teams for a specific League
+SELECT Teams.teamName
+FROM Teams
+INNER JOIN TeamsLeagues ON Teams.teamID = TeamsLeagues.leagueID;
