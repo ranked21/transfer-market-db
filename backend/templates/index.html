@@ -1,0 +1,94 @@
+<!--This HTML is based on templates from FreeCodeCamp, with formatting from W3 schools:
+https://www.freecodecamp.org/news/html-starter-template-a-basic-html5-boilerplate-for-index-html/
+https://www.w3schools.com/html/html_images_background.asp
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Transfer Central - your financial guide to professional football</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <title>Transfer Central</title>
+  </head>
+  <body style="background-image: url('/static/images/background.jpg'); background-repeat: no-repeat;background-attachment: fixed;
+  background-size: 100% 100%;">
+    <main>
+      <div style="background-color: rgba(200, 200, 200, 0.8); text-align: center">
+        <nav class="navbar" style="text-align: center; padding: 0px; top: 0">
+            <ul style="display: flex; padding: 0px; list-style: none">
+                <li style="float: left;"><a href="{{ url_for('home') }}"style="display: block; text-align: center; padding: 15px">Index</a></li>
+                <li style="float: left;"><a href="{{ url_for('players') }}"style="display: block; text-align: center; padding: 15px">Players</a></li>
+                <li style="float: left;"><a href="transfers.html"style="display: block; text-align: center; padding: 15px">Transfers</a></li>
+                <li style="float: left;"><a href="teams.html"style="display: block; text-align: center; padding: 15px">Teams</a></li>
+                <li style="float: left;"><a href="leagues.html"style="display: block; text-align: center; padding: 15px">Leagues</a></li>
+                <li style="float: left;"><a href="agents.html"style="display: block; text-align: center; padding: 15px">Agents</a></li>
+            </ul>
+        </nav>
+      </div>
+      <h1 style="color: #eee;">Transfer Central</h1>
+      <div class="custom-form">
+        <p>The top 5 European Leagues spent $455 million euros during the January transfer window
+          alone. Numbers during the Summer transfer window are often even higher. As transfer fees
+          have inflated over the last decade, management at top European leagues are seeking
+          better financial clarity to better understand the market value of players so that they can
+          better manage their money. Our app aims to fill that market demand by providing insight
+          into player transfers to allow them to better estimate market value when buying and selling
+          players. Teams could use this tool to establish internal KPI’s, such as setting maximum
+          expenditure by position group, or keeping average agent commission low.</p>
+        <div>
+      </div>
+      
+        <div style="background-color: rgba(200, 200, 200, 0.8); text-align: left">
+          <h1 style="margin-bottom: 5px">Leagues Table</h1>
+          <ul style="margin-top: 5px; margin-left: 2px; list-style: disc">
+            <li>Add League</li>
+            <li>Find League</li>
+            <li>Delete League</li>
+            <li>Update League</li>
+          </ul>
+        </div>
+        <div style="background-color: rgba(200, 200, 200, 0.8); text-align: left">
+          <h1 style="margin-bottom: 5px">Teams Table</h1>
+          <ul style="margin-top: 5px; margin-left: 2px; list-style: disc">
+            <li>Add Team</li>
+            <li>Find Team</li>
+            <li>Delete Team</li>
+            <li>Update Team</li>
+          </ul>
+        </div>
+        <div style="background-color: rgba(200, 200, 200, 0.8); text-align: left">
+          <h1 style="margin-bottom: 5px">Players Table</h1>
+          <ul style="margin-top: 5px; margin-left: 2px; list-style: disc">
+            <li>Add Player</li>
+            <li>Find Player</li>
+            <li>Delete Player</li>
+            <li>Update Player</li>
+          </ul>
+        </div>
+        <div style="background-color: rgba(200, 200, 200, 0.8); text-align: left">
+          <h1 style="margin-bottom: 5px">Agents Table</h1>
+          <ul style="margin-top: 5px; margin-left: 2px; list-style: disc">
+            <li>Add Agent</li>
+            <li>Find Agent</li>
+            <li>Delete Agent</li>
+            <li>Update Agent</li>
+          </ul>
+        </div>
+        <div style="background-color: rgba(200, 200, 200, 0.8); text-align: left">
+          <h1 style="margin-bottom: 5px">Transfers Table</h1>
+          <ul style="margin-top: 5px; margin-left: 2px; list-style: disc">
+            <li>Add Transfer</li>
+            <li>Find Transfer</li>
+            <li>Delete Transfer</li>
+            <li>Update Transfer</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+	<script></script>
+  </body>
+</html>

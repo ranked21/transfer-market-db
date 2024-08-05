@@ -1,0 +1,72 @@
+<!--This HTML is based on templates from FreeCodeCamp, with formatting from W3 schools:
+https://www.freecodecamp.org/news/html-starter-template-a-basic-html5-boilerplate-for-index-html/
+https://www.w3schools.com/html/html_images_background.asp
+It also borrows heavily from the Battle Star Galactica example provided in the assignment description.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Transfer Central - your financial guide to professional football</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+  </head>
+  <body style="background-image: url('/static/images/background.jpg'); background-repeat: no-repeat;background-attachment: fixed;
+  background-size: 100% 100%;">
+    <main style="width:100%;">
+      <div id="nav" style="background-color: rgba(200, 200, 200, 0.8); text-align: center; width:100%">
+        <nav class="navbar" style="display: block; text-align: center; padding: 5px;">
+          <ul style="overflow: hidden">
+              <li style="float: left;"><a href="{{ url_for('home') }}"style="display: block; text-align: center; padding: 15px">Index</a></li>
+              <li style="float: left;"><a href="{{ url_for('players') }}"style="display: block; text-align: center; padding: 15px">Players</a></li>
+              <li style="float: left;"><a href="transfers.html"style="display: block; text-align: center; padding: 15px">Transfers</a></li>
+              <li style="float: left;"><a href="teams.html"style="display: block; text-align: center; padding: 15px">Teams</a></li>
+              <li style="float: left;"><a href="leagues.html"style="display: block; text-align: center; padding: 15px">Leagues</a></li>
+              <li style="float: left;"><a href="agents.html"style="display: block; text-align: center; padding: 15px">Agents</a></li>
+          </ul>
+        </nav>
+      </div>
+      <h1 style="color: #eee;">Transfer Central</h1>
+      <h2 style="color: #eee; align-self: center;">Players</h2>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <div id="update" class="custom-form">
+        <form id="updatePlayer" action="/edit_player/{{player[0].playerID}}" method="post">
+            <legend><strong>Update Player</strong></legend>
+              <fieldset class="fields">
+                <div>
+                <input type="hidden" id="playerID" name="playerID" value="{{player[0].playerID}}">
+                <label> First </label> 
+                <input type="text" id="firstName" name="firstName" value="{{player[0].playerFirstName}}">
+                <label> Last </label> 
+                <input type="text" id="lastNname" name="lastNname" value="{{player[0].playerLastName}}">
+                <label> Position </label> 
+                <input type="text" id="position" name="position" value="{{player[0].position}}">
+                <label> Value </label> 
+                <input type="text" id="value" name="value" value="{{player[0].playerMarketValue}}">
+                <label> Team </label> <select id="team" name="team">
+                     <option value="0">&nbsp;</option>
+                     {% for team in teams %}
+                              {% if team['teamID'] == player[0].teamID %}
+                                 <option value="{{ team['teamID'] }}" selected> {{team['teamName']}}</option>
+                              {% else %}
+                                 <option value="{{ team['teamID'] }}"> {{team['teamName']}}</option> 
+                              {% endif %}
+                     <!-- End of this for loop -->
+                     {% endfor %} 
+                </select></div>
+              </fieldset>
+          <input class="btn" type="submit" id="UpdateSavePlayer" value="Save Update Player">
+          <a href='/players'>
+            <input class="btn" type="button" value="cancel">
+          </a>
+        </form> 
+      </div>
+      <p>&nbsp;</p>
+    </main>
+	<script></script>
+  </body>
+</html>
