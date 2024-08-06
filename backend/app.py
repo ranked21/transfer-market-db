@@ -186,4 +186,4 @@ def edit_league(id):
 # Listener
 # change the port number if deploying on the flip servers
 if __name__ == "__main__":
-    app.run(port=3000, debug=True)
+    app.run(port=6754, debug=True)
