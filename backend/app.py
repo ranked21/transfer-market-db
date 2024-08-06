@@ -1,3 +1,4 @@
+import flask
 from flask import Flask, render_template, json, redirect
 from flask_mysqldb import MySQL
 from flask import request, redirect, render_template, jsonify
@@ -32,7 +33,7 @@ def home():
 def players():
     if request.method == "GET":
         # mySQL query to grab all the players in the Players Table
-        query = "SELECT * FROM Players"
+        query = "SELECT Players.playerID, Players.playerFirstName, Players.playerLastName, Players.currentSalary, Players.position, Players.playerMarketValue, Players.teamID FROM Players"
         cur = mysql.connection.cursor()
         cur.execute(query)
         data = cur.fetchall()    
@@ -73,8 +74,6 @@ def delete_players(id):
 
    return redirect("/players")
       
-
-
 @app.route("/edit_player/<int:id>", methods=["POST","GET"])
 def edit_player(id):
    if request.method == "POST":
@@ -100,7 +99,7 @@ def edit_player(id):
          query = "SELECT * FROM Players WHERE playerID = '%s'"
          cur = mysql.connection.cursor()
          cur.execute(query, (id,))
-         player = cur.fetchall();
+         player = cur.fetchall()
 
          teams_query = "SELECT teamID, teamName FROM Teams"
          cur.execute(teams_query)
@@ -112,7 +111,78 @@ def edit_player(id):
 
          return render_template("edit_players.html", player=player, teams=teams)
 
+@app.route("/leagues", methods=["POST","GET"])
+def leagues():
+    if request.method == "GET":
+        # mySQL query to grab all the players in the Leagues Table
+        query = "SELECT * FROM Leagues"
+        cur = mysql.connection.cursor()
+        cur.execute(query)
+        data = cur.fetchall()    
 
+        # Test Statement to print the data to the console
+        print("Retrieved Leagues: ", data)
+
+        return render_template("leagues.html", data=data)
+    
+    if request.method == "POST":    
+      name = request.form["name"]
+      country = request.form["country"]
+      rank = request.form["rank"]
+      numberTeams = request.form["numberTeams"]
+      yearFounded = request.form["yearFounded"]
+
+      # Test Statement to print the data to the console
+      print(name, country, rank, numberTeams, yearFounded)
+
+      query = "INSERT INTO Leagues (`leagueName`, `country`, `divisionRank`, `numberOfTeams`, `yearFounded`) VALUES (%s, %s, %s, %s, %s)"
+      cur = mysql.connection.cursor()
+      cur.execute(query, (name, country, rank, numberTeams, yearFounded))
+      mysql.connection.commit()
+
+      return redirect("/leagues")
+
+@app.route("/delete_league/<int:id>")
+def delete_leagues(id):
+   query = "DELETE FROM Leagues WHERE leagueID = '%s'"
+   cur = mysql.connection.cursor()
+   cur.execute(query, (id,))
+   mysql.connection.commit()
+
+   return redirect("/leagues")
+
+@app.route("/edit_league/<int:id>", methods=["POST","GET"])
+def edit_league(id):
+   if request.method == "POST":
+      leagueID = request.form["leagueID"]
+      name = request.form["name"]
+      country = request.form["country"]
+      rank = request.form["rank"]
+      numberTeams = request.form["numberTeams"]
+      yearFounded = request.form["yearFounded"]
+
+      # Test Statement to print the data to the console
+      print("Testing Update!")
+      print(leagueID, name, country, rank, numberTeams, yearFounded)
+
+      query = "UPDATE Leagues SET leagueName = %s, country = %s, divisionRank = %s, numberOfTeams = %s, yearFounded = %s WHERE leagueID = %s "
+      cur = mysql.connection.cursor()
+      cur.execute(query, (name, country, rank, numberTeams, yearFounded, leagueID))
+      mysql.connection.commit()
+
+      return redirect("/leagues")
+
+   if request.method == "GET":
+         query = "SELECT * FROM Leagues WHERE leagueID = '%s'"
+         cur = mysql.connection.cursor()
+         cur.execute(query, (id,))
+         league = cur.fetchall()
+
+         # Test Statement to print the data to the console
+         print("Selected League: ", league)
+
+         return render_template("edit_leagues.html",league=league)
+   
 # Listener
 # change the port number if deploying on the flip servers
 if __name__ == "__main__":

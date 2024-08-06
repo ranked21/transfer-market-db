@@ -1,2 +1,4 @@
 # Ignore files from the venv
 cs340-final-project/
+.venv/
+.DS_Store

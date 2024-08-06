@@ -1,0 +1,92 @@
+<!--This HTML is based on templates from FreeCodeCamp, with formatting from W3 schools:
+https://www.freecodecamp.org/news/html-starter-template-a-basic-html5-boilerplate-for-index-html/
+https://www.w3schools.com/html/html_images_background.asp
+It also borrows heavily from the Battle Star Galactica example provided in the assignment description.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Transfer Central - your financial guide to professional football</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <title>Transfer Central</title>
+  </head>
+  <body style="background-image: url('/static/images/background.jpg'); background-repeat: no-repeat;background-attachment: fixed;
+  background-size: 100% 100%;">
+    <main style="width:100%">
+      <div style="background-color: rgba(200, 200, 200, 0.8); text-align: center">
+        <nav class="navbar" style="text-align: center; padding: 0px; top: 0">
+            <ul style="display: flex; padding: 0px; list-style: none">
+                <li style="float: left;"><a href="{{ url_for('home') }}"style="display: block; text-align: center; padding: 15px">Index</a></li>
+                <li style="float: left;"><a href="{{ url_for('players') }}"style="display: block; text-align: center; padding: 15px">Players</a></li>
+                <li style="float: left;"><a href="transfers.html"style="display: block; text-align: center; padding: 15px">Transfers</a></li>
+                <li style="float: left;"><a href="teams.html"style="display: block; text-align: center; padding: 15px">Teams</a></li>
+                <li style="float: left;"><a href="{{ url_for('leagues') }}"style="display: block; text-align: center; padding: 15px">Leagues</a></li>
+                <li style="float: left;"><a href="agents.html"style="display: block; text-align: center; padding: 15px">Agents</a></li>
+            </ul>
+        </nav>
+      </div>
+      <h1 style="color: #eee;">Transfer Central</h1>
+      <h2 style="color: #eee; align-self: center;">Leagues</h2>
+      <div class="custom-form">
+        <table border="1" cellpadding="5" style="margin-left: auto;
+  margin-right: auto; width: 50%; color: #eee; background-color: black">
+            <caption>Leagues</caption>
+            {% if data %}
+            <thead>
+               <tr>
+                  <!-- Iterate through each key in the first entry to get the column name -->
+                       {% for key in data[0].keys() %}
+                  
+                       <!-- Create a <th> tag with the key inside of it, this will be our header row -->
+                  <th scope="col" data-field="{{ key }}" data-filter-control="input">{{ key }}</th>
+              
+                       <!-- End of this for loop -->
+                       {% endfor %} 
+                   </tr>
+
+           <tbody>
+              <!-- Now, iterate through every item in data -->{% for item in data %}
+                  <tr>
+                     <!-- Then iterate through every key in the current item dictionary -->
+                           {% for key in item.keys() %}
+
+                     <!-- Create a <td> element with the value of that key in it -->
+                     <td> {{item[key]}} </td> 
+                           {% endfor %}
+
+                           <!-- Create our edit/delete buttons -->
+                     <td><a href="edit_league/{{item.leagueID}}" class="btn btn-default">Edit</a></td>
+                     <td><a href="delete_league/{{item.leagueID}}" class="btn btn-default">Delete</a></td>
+                  </tr> 
+                       {% endfor %} 
+               {% endif %} 
+          </table>
+      </div>
+      <p>&nbsp;</p>
+      <div id="insert" class="custom-form">
+        <form id="addLeague" method="post" action="/leagues">
+            <legend><strong>Add League</strong></legend>
+              <fieldset class="fields">
+                <label> Name </label> <input type="text" name="name">
+                <label> Country </label> <input type="text" name="country">
+                <label> Rank </label> <input type="text" name="rank">
+                <label> Number of Teams </label> <input type="text" name="numberTeams">
+                <label> Year Founded </label> <input type="text" name="yearFounded">
+              </fieldset>
+              <input class="btn" type="submit" id="addLeague" value="Add League">
+              <a href='/leagues'>
+                <input class="btn" type="button" value="Cancel">
+              </a>
+        </form>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </main>
+	<script></script>
+  </body>
+</html>

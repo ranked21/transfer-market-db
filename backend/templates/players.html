@@ -19,13 +19,13 @@ It also borrows heavily from the Battle Star Galactica example provided in the a
     <main style="width:100%;">
       <div id="nav" style="background-color: rgba(200, 200, 200, 0.8); text-align: center; width:100%">
         <nav class="navbar" style="display: block; text-align: center; padding: 5px;">
-          <ul style="overflow: hidden">
-              <li style="float: left;"><a href="{{ url_for('home') }}"style="display: block; text-align: center; padding: 15px">Index</a></li>
-              <li style="float: left;"><a href="{{ url_for('players') }}"style="display: block; text-align: center; padding: 15px">Players</a></li>
-              <li style="float: left;"><a href="transfers.html"style="display: block; text-align: center; padding: 15px">Transfers</a></li>
-              <li style="float: left;"><a href="teams.html"style="display: block; text-align: center; padding: 15px">Teams</a></li>
-              <li style="float: left;"><a href="leagues.html"style="display: block; text-align: center; padding: 15px">Leagues</a></li>
-              <li style="float: left;"><a href="agents.html"style="display: block; text-align: center; padding: 15px">Agents</a></li>
+          <ul style="display: flex; padding: 0px; list-style: none">
+            <li style="float: left;"><a href="{{ url_for('home') }}"style="display: block; text-align: center; padding: 15px">Index</a></li>
+            <li style="float: left;"><a href="{{ url_for('players') }}"style="display: block; text-align: center; padding: 15px">Players</a></li>
+            <li style="float: left;"><a href="transfers.html"style="display: block; text-align: center; padding: 15px">Transfers</a></li>
+            <li style="float: left;"><a href="teams.html"style="display: block; text-align: center; padding: 15px">Teams</a></li>
+            <li style="float: left;"><a href="{{ url_for('leagues') }}"style="display: block; text-align: center; padding: 15px">Leagues</a></li>
+            <li style="float: left;"><a href="agents.html"style="display: block; text-align: center; padding: 15px">Agents</a></li>
           </ul>
         </nav>
       </div>
@@ -86,9 +86,9 @@ It also borrows heavily from the Battle Star Galactica example provided in the a
                   {% endif %} 
                 </div>
                 </fieldset>
-                <input class="btn" type="submit" id="addPlayer" value="Add a Player">
+                <input class="btn" type="submit" id="addPlayer" value="Add Player">
                 <a href='/players'>
-                  <input class="btn" type="button" value="cancel">
+                  <input class="btn" type="button" value="Cancel">
                 </a>
           </form>
       </div>
