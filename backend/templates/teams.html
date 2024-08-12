@@ -21,7 +21,7 @@ https://www.w3schools.com/html/html_images_background.asp
               <ul style="display: flex; padding: 0px; list-style: none">
                 <li style="float: left;"><a href="{{ url_for('home') }}"style="display: block; text-align: center; padding: 15px">Index</a></li>
                 <li style="float: left;"><a href="{{ url_for('players') }}"style="display: block; text-align: center; padding: 15px">Players</a></li>
-                <li style="float: left;"><a href="transfers.html"style="display: block; text-align: center; padding: 15px">Transfers</a></li>
+                <li style="float: left;"><a href="{{ url_for('transfers') }}"style="display: block; text-align: center; padding: 15px">Transfers</a></li>
                 <li style="float: left;"><a href="{{ url_for('teams') }}"style="display: block; text-align: center; padding: 15px">Teams</a></li>
                 <li style="float: left;"><a href="{{ url_for('leagues') }}"style="display: block; text-align: center; padding: 15px">Leagues</a></li>
                 <li style="float: left;"><a href="agents.html"style="display: block; text-align: center; padding: 15px">Agents</a></li>
@@ -92,18 +92,6 @@ https://www.w3schools.com/html/html_images_background.asp
         </div>
         <br></br>
         <p>&nbsp;</p>
-        <div id="delete" class="custom-form">
-          <form id="deleteTeam">
-              <legend><strong>Delete Team</strong></legend>
-                  <fieldset class="fields">
-                  <p>Are you sure you wish to delete the following?</p>
-                  <label>ID:</label> 1
-                    <label> Name </label> Real Madrid
-            </fieldset>
-            <input class="btn" type="submit" id="DeleteTeam" value="Delete Team">
-                  <input class="btn" type="button" value="cancel" >
-          </form> 
-        </div><!-- delete -->
     </main>
 	<script></script>
   </body>

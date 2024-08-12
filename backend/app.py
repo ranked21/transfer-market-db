@@ -268,6 +268,104 @@ def edit_team(id):
 
       return redirect("/teams")
 
+@app.route("/transfers", methods=["POST","GET"])
+def transfers():
+    if request.method == "GET":
+        # mySQL query to grab all the players in the Transfers Table
+        query = "SELECT Transfers.transferID, CONCAT(Players.playerFirstName, ' ', Players.playerLastName) AS playerName, CONCAT(Agents.agentFirstName, ' ', Agents.agentLastName) AS agentName, SellingTeams.teamName AS sellingTeamName, BuyingTeams.teamName AS buyingTeamName, Transfers.dateOfTransfer, Transfers.transferFee, Transfers.newContractLength, Transfers.agentCommissionPercent FROM Transfers JOIN Players ON Transfers.playerID = Players.playerID JOIN Agents ON Transfers.agentID = Agents.agentID JOIN Teams AS SellingTeams ON Transfers.sellingTeamID = SellingTeams.teamID JOIN Teams AS BuyingTeams ON Transfers.buyingTeamID = BuyingTeams.teamID;"
+        cur = mysql.connection.cursor()
+        cur.execute(query)
+        data = cur.fetchall()    
+
+        players_query = "SELECT playerID, playerFirstName, playerLastName FROM Players"
+        cur.execute(players_query)
+        players = cur.fetchall()
+
+        agents_query = "SELECT agentID, agentFirstName, agentLastName FROM Agents"
+        cur.execute(agents_query)
+        agents = cur.fetchall()
+
+        teams_query = "SELECT teamID, teamName FROM Teams"
+        cur.execute(teams_query)
+        teams = cur.fetchall()
+
+        return render_template("transfers.html", data=data, players=players, agents=agents, teams=teams)
+    
+    if request.method == "POST":
+      print(request.form)
+
+      playerID = request.form["player"]
+      agentID = request.form["agent"]
+      sellingTeamID = request.form["sellingTeam"]
+      buyingTeamID = request.form["buyingTeam"]
+      transferDate = request.form["transferDate"]
+      transferFee = request.form["transferFee"]
+      contractLength = request.form["contractLength"]
+      commissionPercent = request.form["commissionPercent"]
+
+      # Test Statement to print the data to the console
+      print(playerID, agentID, sellingTeamID, buyingTeamID, transferDate, transferFee, contractLength, commissionPercent)
+
+      query = "INSERT INTO Transfers (`playerID`, `agentID`, `sellingTeamID`, `buyingTeamID`, `dateOfTransfer`, `transferFee`, `newContractLength`, `agentCommissionPercent`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s);"
+      cur = mysql.connection.cursor()
+      cur.execute(query, (playerID, agentID, sellingTeamID, buyingTeamID, transferDate, transferFee, contractLength, commissionPercent))
+      mysql.connection.commit()
+
+      return redirect("/transfers")
+
+@app.route("/delete_transfer/<int:id>")
+def delete_transfers(id):
+   query = "DELETE FROM Transfers WHERE transferID = '%s'"
+   cur = mysql.connection.cursor()
+   cur.execute(query, (id,))
+   mysql.connection.commit()
+
+@app.route("/edit_transfer/<int:id>", methods=["POST","GET"])
+def edit_transfer(id):
+   if request.method == "GET":
+        query = "SELECT * FROM Transfers WHERE transferID = '%s'"
+        cur = mysql.connection.cursor()
+        cur.execute(query, (id,))
+        transfer = cur.fetchall()
+
+        players_query = "SELECT playerID, playerFirstName, playerLastName FROM Players"
+        cur.execute(players_query)
+        players = cur.fetchall()
+
+        agents_query = "SELECT agentID, agentFirstName, agentLastName FROM Agents"
+        cur.execute(agents_query)
+        agents = cur.fetchall()
+
+        teams_query = "SELECT teamID, teamName FROM Teams"
+        cur.execute(teams_query)
+        teams = cur.fetchall()
+
+        return render_template("edit_transfers.html", transfer=transfer, players=players, agents=agents, teams=teams)
+        
+   if request.method == "POST":
+      print(request.form)
+
+      transferID = request.form["transferID"]
+      playerID = request.form["playerName"]
+      agentID = request.form["agentName"]
+      sellingTeamID = request.form["sellingTeamName"]
+      buyingTeamID = request.form["buyingTeamName"]
+      transferDate = request.form["transferDate"]
+      transferFee = request.form["transferFee"]
+      contractLength = request.form["contractLength"]
+      commissionPercent = request.form["commissionPercent"]
+
+      # Test Statement to print the data to the console
+      print("Testing Update!")
+      print(playerID, agentID, sellingTeamID, buyingTeamID, transferDate, contractLength, commissionPercent)
+
+      query = "Update Transfers SET playerID = %s, agentID = %s, sellingTeamID = %s, buyingTeamID = %s, dateOfTransfer = %s, transferFee = %s, newContractLength = %s, agentCommissionPercent = %s WHERE transferID = %s"
+      cur = mysql.connection.cursor()
+      cur.execute(query, (playerID, agentID, sellingTeamID, buyingTeamID, transferDate, transferFee, contractLength, commissionPercent, transferID))
+      mysql.connection.commit()
+
+      return redirect("/transfers")
+
 # Listener
 # change the port number if deploying on the flip servers
 if __name__ == "__main__":
