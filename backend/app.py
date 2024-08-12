@@ -183,7 +183,92 @@ def edit_league(id):
 
          return render_template("edit_leagues.html",league=league)
    
+@app.route("/teams", methods=["POST","GET"])
+def teams():
+    if request.method == "GET":
+        # mySQL query to grab all the players in the Leagues Table
+        query = "SELECT * FROM Teams"
+        cur = mysql.connection.cursor()
+        cur.execute(query)
+        data = cur.fetchall()    
+
+        leagues_query = "SELECT leagueID, leagueName FROM Leagues"
+        cur.execute(leagues_query)
+        leagues = cur.fetchall()
+
+        # Test Statement to print the data to the console
+        print("Retrieved Teams: ", data)
+        print("Retrieved Leagues: ", leagues)
+
+        return render_template("teams.html", data=data, leagues=leagues)
+    
+    if request.method == "POST":
+      teamName = request.form["name"]
+      teamCity = request.form["city"]
+      leagueID = request.form["league"]
+      teamYearFounded = request.form["yearFounded"]
+      teamStadiumCapacity = request.form["stadiumCapacity"]
+
+      # Test Statement to print the data to the console
+      print(teamName, teamCity, teamYearFounded, teamStadiumCapacity, leagueID)
+
+      query = "INSERT INTO Teams (`teamName`, `city`, `yearFounded`, `stadiumCapacity`, `leagueID`) VALUES (%s, %s, %s, %s, %s)"
+      cur = mysql.connection.cursor()
+      cur.execute(query, (teamName, teamCity, teamYearFounded, teamStadiumCapacity, leagueID))
+      mysql.connection.commit()
+
+      return redirect("/teams")
+
+@app.route("/delete_team/<int:id>")
+def delete_teams(id):
+   query = "DELETE FROM Teams WHERE teamID = '%s'"
+   cur = mysql.connection.cursor()
+   cur.execute(query, (id,))
+   mysql.connection.commit()
+
+   return redirect("/teams")   
+
+@app.route("/edit_team/<int:id>", methods=["POST","GET"])
+def edit_team(id):
+   if request.method == "GET":
+        query = "SELECT * FROM Teams WHERE teamID = '%s'"
+        cur = mysql.connection.cursor()
+        cur.execute(query, (id,))
+        team = cur.fetchall()
+
+        leagues_query = "SELECT leagueID, leagueName FROM Leagues"
+        cur.execute(leagues_query)
+        leagues = cur.fetchall()
+        
+        # Test Statement to print the data to the console
+        print("Selected Team: ", team)
+        print("Selected Leagues: ", leagues)
+
+        return render_template("edit_teams.html", team=team, leagues=leagues)
+   
+   if request.method == "POST":
+      print("Testing the new update method!")
+      print(request.form)
+
+      teamID = request.form["teamID"]
+      teamName = request.form["name"]
+      teamCity = request.form["city"]
+      leagueID = request.form["league"]
+      teamYearFounded = request.form["yearFounded"]
+      teamStadiumCapacity = request.form["stadiumCapacity"]
+
+      # Test Statement to print the data to the console
+      print("Testing Update!")
+      print(teamID, teamName, teamCity, leagueID, teamYearFounded, teamStadiumCapacity)
+
+      query = "UPDATE Teams SET teamName = %s, city = %s, yearFounded = %s, stadiumCapacity = %s, leagueID = %s WHERE teamID = %s"
+      cur = mysql.connection.cursor()
+      cur.execute(query, (teamName, teamCity, teamYearFounded, teamStadiumCapacity, leagueID, teamID))
+      mysql.connection.commit()
+
+      return redirect("/teams")
+
 # Listener
 # change the port number if deploying on the flip servers
 if __name__ == "__main__":
-    app.run(port=6754, debug=True)
+    app.run(port=59481)

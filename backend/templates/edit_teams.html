@@ -1,0 +1,72 @@
+<!--This HTML is based on templates from FreeCodeCamp, with formatting from W3 schools:
+https://www.freecodecamp.org/news/html-starter-template-a-basic-html5-boilerplate-for-index-html/
+https://www.w3schools.com/html/html_images_background.asp
+It also borrows heavily from the Battle Star Galactica example provided in the assignment description.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Transfer Central - your financial guide to professional football</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+  </head>
+  <body style="background-image: url('/static/images/background.jpg'); background-repeat: no-repeat;background-attachment: fixed;
+  background-size: 100% 100%;">
+    <main style="width:100%;">
+      <div id="nav" style="background-color: rgba(200, 200, 200, 0.8); text-align: center; width:100%">
+        <nav class="navbar" style="display: block; text-align: center; padding: 5px;">
+          <ul style="display: flex; padding: 0px; list-style: none">
+            <li style="float: left;"><a href="{{ url_for('home') }}"style="display: block; text-align: center; padding: 15px">Index</a></li>
+            <li style="float: left;"><a href="{{ url_for('players') }}"style="display: block; text-align: center; padding: 15px">Players</a></li>
+            <li style="float: left;"><a href="transfers.html"style="display: block; text-align: center; padding: 15px">Transfers</a></li>
+            <li style="float: left;"><a href="{{ url_for('teams') }}"style="display: block; text-align: center; padding: 15px">Teams</a></li>
+            <li style="float: left;"><a href="{{ url_for('leagues') }}"style="display: block; text-align: center; padding: 15px">Leagues</a></li>
+            <li style="float: left;"><a href="agents.html"style="display: block; text-align: center; padding: 15px">Agents</a></li>        </ul>
+        </nav>
+      </div>
+      <h1 style="color: #eee;">Transfer Central</h1>
+      <h2 style="color: #eee; align-self: center;">Players</h2>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <div id="update" class="custom-form">
+        <form id="updateTeam" action="/edit_team/{{team[0].teamID}}" method="post">
+            <legend><strong>Edit Team</strong></legend>
+                  <fieldset class="fields">
+                    <div>
+                        <input type="hidden" id="teamID" name="teamID" value="{{team[0].teamID}}">
+                        <label> Team Name </label> 
+                        <input type="text" id="name" name="name" value="{{team[0].teamName}}">
+                        <label> City </label> 
+                        <input type="text" id="city" name="city" value="{{team[0].city}}">
+                        <label> League </label> <select id="league" name="league">
+                            <option value="0">&nbsp;</option>
+                            {% for league in leagues %}
+                                     {% if league['leagueID'] == team[0].leagueID %}
+                                        <option value="{{ league['leagueID'] }}" selected> {{league['leagueName']}}</option>
+                                     {% else %}
+                                        <option value="{{ league['leagueID'] }}"> {{league['leagueName']}}</option> 
+                                     {% endif %}
+                            <!-- End of this for loop -->
+                            {% endfor %} 
+                       </select>
+                        <label> Year Founded </label> 
+                        <input type="text" id="yearFounded" name="yearFounded" value="{{team[0].yearFounded}}">
+                        <label> Stadium Capacity </label> 
+                        <input type="text" id="stadiumCapacity" name="stadiumCapacity" value="{{team[0].stadiumCapacity}}">
+                    </div>
+                  </fieldset>
+          <input class="btn" type="submit" id="UpdateSaveTeam" value="Update Team">
+          <a href='/teams'>
+            <input class="btn" type="button" value="Cancel">
+          </a>
+        </form> 
+      </div>
+      <p>&nbsp;</p>
+    </main>
+	<script></script>
+  </body>
+</html>
