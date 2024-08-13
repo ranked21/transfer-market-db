@@ -42,10 +42,6 @@ def players():
         cur.execute(teams_query)
         teams = cur.fetchall()
 
-        # Test Statement to print the data to the console
-        print("Retrieved Players: ", data)
-        print("Retrieved Teams", teams)
-
         return render_template("players.html", data=data, teams=teams)
     
     if request.method == "POST":
@@ -54,9 +50,6 @@ def players():
       position = request.form["position"]
       value = request.form["value"]
       teamID = request.form["team"]
-
-      # Test Statement to print the data to the console
-      print(first_name, last_name, position, value, teamID)
 
       query = "INSERT INTO Players (`playerFirstName`, `playerLastName`, `position`, `playerMarketValue`, `teamID`) VALUES (%s, %s, %s, %s, %s)"
       cur = mysql.connection.cursor()
@@ -84,10 +77,6 @@ def edit_player(id):
       value = request.form["value"]
       teamID = request.form["team"]
 
-      # Test Statement to print the data to the console
-      print("Testing Update!")
-      print(first_name, last_name, position, value, teamID, playerID)
-
       query = "UPDATE Players SET playerFirstName = %s, playerLastName = %s, position = %s, playerMarketValue = %s, teamID = %s WHERE playerID = %s"
       cur = mysql.connection.cursor()
       cur.execute(query, (first_name, last_name, position, value, teamID, playerID))
@@ -105,10 +94,6 @@ def edit_player(id):
          cur.execute(teams_query)
          teams = cur.fetchall()
 
-         # Test Statement to print the data to the console
-         print("Selected Player: ", player)
-         print("Retrieved Teams", teams)
-
          return render_template("edit_players.html", player=player, teams=teams)
 
 @app.route("/leagues", methods=["POST","GET"])
@@ -120,9 +105,6 @@ def leagues():
         cur.execute(query)
         data = cur.fetchall()    
 
-        # Test Statement to print the data to the console
-        print("Retrieved Leagues: ", data)
-
         return render_template("leagues.html", data=data)
     
     if request.method == "POST":    
@@ -131,9 +113,6 @@ def leagues():
       rank = request.form["rank"]
       numberTeams = request.form["numberTeams"]
       yearFounded = request.form["yearFounded"]
-
-      # Test Statement to print the data to the console
-      print(name, country, rank, numberTeams, yearFounded)
 
       query = "INSERT INTO Leagues (`leagueName`, `country`, `divisionRank`, `numberOfTeams`, `yearFounded`) VALUES (%s, %s, %s, %s, %s)"
       cur = mysql.connection.cursor()
@@ -161,10 +140,6 @@ def edit_league(id):
       numberTeams = request.form["numberTeams"]
       yearFounded = request.form["yearFounded"]
 
-      # Test Statement to print the data to the console
-      print("Testing Update!")
-      print(leagueID, name, country, rank, numberTeams, yearFounded)
-
       query = "UPDATE Leagues SET leagueName = %s, country = %s, divisionRank = %s, numberOfTeams = %s, yearFounded = %s WHERE leagueID = %s "
       cur = mysql.connection.cursor()
       cur.execute(query, (name, country, rank, numberTeams, yearFounded, leagueID))
@@ -177,9 +152,6 @@ def edit_league(id):
          cur = mysql.connection.cursor()
          cur.execute(query, (id,))
          league = cur.fetchall()
-
-         # Test Statement to print the data to the console
-         print("Selected League: ", league)
 
          return render_template("edit_leagues.html",league=league)
    
@@ -196,10 +168,6 @@ def teams():
         cur.execute(leagues_query)
         leagues = cur.fetchall()
 
-        # Test Statement to print the data to the console
-        print("Retrieved Teams: ", data)
-        print("Retrieved Leagues: ", leagues)
-
         return render_template("teams.html", data=data, leagues=leagues)
     
     if request.method == "POST":
@@ -208,9 +176,6 @@ def teams():
       leagueID = request.form["league"]
       teamYearFounded = request.form["yearFounded"]
       teamStadiumCapacity = request.form["stadiumCapacity"]
-
-      # Test Statement to print the data to the console
-      print(teamName, teamCity, teamYearFounded, teamStadiumCapacity, leagueID)
 
       query = "INSERT INTO Teams (`teamName`, `city`, `yearFounded`, `stadiumCapacity`, `leagueID`) VALUES (%s, %s, %s, %s, %s)"
       cur = mysql.connection.cursor()
@@ -240,10 +205,6 @@ def edit_team(id):
         cur.execute(leagues_query)
         leagues = cur.fetchall()
         
-        # Test Statement to print the data to the console
-        print("Selected Team: ", team)
-        print("Selected Leagues: ", leagues)
-
         return render_template("edit_teams.html", team=team, leagues=leagues)
    
    if request.method == "POST":
@@ -256,10 +217,6 @@ def edit_team(id):
       leagueID = request.form["league"]
       teamYearFounded = request.form["yearFounded"]
       teamStadiumCapacity = request.form["stadiumCapacity"]
-
-      # Test Statement to print the data to the console
-      print("Testing Update!")
-      print(teamID, teamName, teamCity, leagueID, teamYearFounded, teamStadiumCapacity)
 
       query = "UPDATE Teams SET teamName = %s, city = %s, yearFounded = %s, stadiumCapacity = %s, leagueID = %s WHERE teamID = %s"
       cur = mysql.connection.cursor()
@@ -301,14 +258,10 @@ def transfers():
       transferDate = request.form["transferDate"]
       transferFee = request.form["transferFee"]
       contractLength = request.form["contractLength"]
-      commissionPercent = request.form["commissionPercent"]
 
-      # Test Statement to print the data to the console
-      print(playerID, agentID, sellingTeamID, buyingTeamID, transferDate, transferFee, contractLength, commissionPercent)
-
-      query = "INSERT INTO Transfers (`playerID`, `agentID`, `sellingTeamID`, `buyingTeamID`, `dateOfTransfer`, `transferFee`, `newContractLength`, `agentCommissionPercent`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s);"
+      query = "INSERT INTO Transfers (`playerID`, `agentID`, `sellingTeamID`, `buyingTeamID`, `dateOfTransfer`, `transferFee`, `newContractLength`) VALUES (%s, %s, %s, %s, %s, %s, %s);"
       cur = mysql.connection.cursor()
-      cur.execute(query, (playerID, agentID, sellingTeamID, buyingTeamID, transferDate, transferFee, contractLength, commissionPercent))
+      cur.execute(query, (playerID, agentID, sellingTeamID, buyingTeamID, transferDate, transferFee, contractLength))
       mysql.connection.commit()
 
       return redirect("/transfers")
@@ -353,19 +306,74 @@ def edit_transfer(id):
       transferDate = request.form["transferDate"]
       transferFee = request.form["transferFee"]
       contractLength = request.form["contractLength"]
-      commissionPercent = request.form["commissionPercent"]
 
-      # Test Statement to print the data to the console
-      print("Testing Update!")
-      print(playerID, agentID, sellingTeamID, buyingTeamID, transferDate, contractLength, commissionPercent)
-
-      query = "Update Transfers SET playerID = %s, agentID = %s, sellingTeamID = %s, buyingTeamID = %s, dateOfTransfer = %s, transferFee = %s, newContractLength = %s, agentCommissionPercent = %s WHERE transferID = %s"
+      query = "Update Transfers SET playerID = %s, agentID = %s, sellingTeamID = %s, buyingTeamID = %s, dateOfTransfer = %s, transferFee = %s, newContractLength = %s WHERE transferID = %s"
       cur = mysql.connection.cursor()
-      cur.execute(query, (playerID, agentID, sellingTeamID, buyingTeamID, transferDate, transferFee, contractLength, commissionPercent, transferID))
+      cur.execute(query, (playerID, agentID, sellingTeamID, buyingTeamID, transferDate, transferFee, contractLength, transferID))
       mysql.connection.commit()
 
       return redirect("/transfers")
 
+@app.route("/agents", methods=["POST","GET"])
+def agents():
+    if request.method == "GET":
+        # mySQL query to grab all the players in the Leagues Table
+        query = "SELECT * FROM Agents"
+        cur = mysql.connection.cursor()
+        cur.execute(query)
+        data = cur.fetchall()    
+
+        return render_template("agents.html", data=data)
+    
+    if request.method == "POST":        
+      firstName = request.form["firstName"]
+      lastName = request.form["lastName"]
+      agency = request.form["agency"]
+      yearsExperience = request.form["yearsExperience"]
+      commission = request.form["commission"]
+
+      query = "INSERT INTO Agents (`agentFirstName`, `agentLastName`, `agentAgency`, `agentYearsExperience`, `agentCommissionRate`) VALUES (%s, %s, %s, %s, %s)"
+      cur = mysql.connection.cursor()
+      cur.execute(query, (firstName, lastName, agency, yearsExperience, commission))
+      mysql.connection.commit()
+
+      return redirect("/agents")
+
+@app.route("/delete_agent/<int:id>")
+def delete_agents(id):
+   query = "DELETE FROM Agents WHERE agentID = '%s'"
+   cur = mysql.connection.cursor()
+   cur.execute(query, (id,))
+   mysql.connection.commit()
+
+   return redirect("/agents")
+    
+@app.route("/edit_agent/<int:id>", methods=["POST","GET"])
+def edit_agent(id):
+   if request.method == "GET":
+        query = "SELECT * FROM Agents WHERE agentID = '%s'"
+        cur = mysql.connection.cursor()
+        cur.execute(query, (id,))
+        agent = cur.fetchall()
+        
+        return render_template("edit_agents.html", agent=agent)
+   
+   if request.method == "POST": 
+      print(request.form)
+      agentID = request.form["agentID"]   
+      firstName = request.form["firstName"]
+      lastName = request.form["lastName"]
+      agency = request.form["agency"]
+      yearsExperience = request.form["yearsExperience"]
+      commission = request.form["commission"]
+
+      query = "UPDATE Agents SET agentFirstName = %s, agentLastName = %s, agentAgency = %s, agentYearsExperience = %s, agentCommissionRate = %s WHERE agentID = %s"
+      cur = mysql.connection.cursor()
+      cur.execute(query, (firstName, lastName, agency, yearsExperience, commission, agentID))
+      mysql.connection.commit()
+
+      return redirect("/agents")
+   
 # Listener
 # change the port number if deploying on the flip servers
 if __name__ == "__main__":

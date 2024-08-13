@@ -34,23 +34,18 @@ It also borrows heavily from the Battle Star Galactica example provided in the a
       <p>&nbsp;</p>
       <p>&nbsp;</p>
       <div id="update" class="custom-form">
-        <form id="updateLeague" action="/edit_league/{{league[0].leagueID}}" method="post">
-            <legend><strong>Update League</strong></legend>
-                <fieldset class="fields">
-                <input type="hidden" id="leagueID" name="leagueID" value="{{league[0].leagueID}}">
-                <label> Name </label> 
-                <input type="text" name="name" value="{{league[0].leagueName}}">
-                <label> Country </label> 
-                <input type="text" name="country" value="{{league[0].country}}">
-                <label> Rank </label> 
-                <input type="text" name="rank" value="{{league[0].divisionRank}}">
-                <label> Number of Teams </label> 
-                <input type="text" name="numberTeams" value="{{league[0].numberOfTeams}}">
-                <label> Year Founded </label> 
-                <input type="text" name="yearFounded" value="{{league[0].yearFounded}}">
+        <form id="updateAgent" action="/edit_agent/{{agent[0].agentID}}" method="post">
+            <legend><strong>Update Agent</strong></legend>
+            <fieldset class="fields">
+              <input type="hidden" id="agentID" name="agentID" value="{{agent[0].agentID}}">
+              <label> First Name </label> <input type="text" name="firstName" value="{{agent[0].agentFirstName}}">
+              <label> Last Name </label> <input type="text" name="lastName" value="{{agent[0].agentLastName}}">
+              <label> Agency </label> <input type="text" name="agency" value="{{agent[0].agentAgency}}">
+              <label> Years Experience </label> <input type="text" name="yearsExperience" value="{{agent[0].agentYearsExperience}}">
+              <label> Commission </label> <input type="text" name="commission" value="{{agent[0].agentCommissionRate}}">
             </fieldset>
-            <input class="btn" type="submit" id="UpdateSaveLeague" value="Update League">
-            <a href='/leagues'>
+            <input class="btn" type="submit" id="UpdateSaveAgent" value="Update Agent">
+            <a href='/agents'>
                 <input class="btn" type="button" value="Cancel">
             </a>
         </form> 

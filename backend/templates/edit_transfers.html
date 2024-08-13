@@ -25,7 +25,7 @@ It also borrows heavily from the Battle Star Galactica example provided in the a
             <li style="float: left;"><a href="{{ url_for('transfers') }}"style="display: block; text-align: center; padding: 15px">Transfers</a></li>
             <li style="float: left;"><a href="{{ url_for('teams') }}"style="display: block; text-align: center; padding: 15px">Teams</a></li>
             <li style="float: left;"><a href="{{ url_for('leagues') }}"style="display: block; text-align: center; padding: 15px">Leagues</a></li>
-            <li style="float: left;"><a href="agents.html"style="display: block; text-align: center; padding: 15px">Agents</a></li>        </ul>
+            <li style="float: left;"><a href="{{ url_for('agents') }}"style="display: block; text-align: center; padding: 15px">Agents</a></li>        </ul>
         </nav>
       </div>
       <h1 style="color: #eee;">Transfer Central</h1>
@@ -88,7 +88,6 @@ It also borrows heavily from the Battle Star Galactica example provided in the a
               <label> Transfer Date </label> <input type="date" id="transferDate" name="transferDate" value="{{transfer[0].dateOfTransfer}}">
               <label> Transfer Fee </label> <input type="text" id="transferFee" name="transferFee" value="{{transfer[0].transferFee}}">
               <label> Contract Length </label> <input type="text" id="contractLength" name="contractLength" value="{{transfer[0].newContractLength}}">
-              <label> Commission Percent </label> <input type="text" id="commissionPercent" name="commissionPercent" value="{{transfer[0].agentCommissionPercent}}">
             </fieldset>       
           <input class="btn" type="submit" id="UpdateSaveTransfer" value="Update Transfer">
           <a href='/transfers'>
